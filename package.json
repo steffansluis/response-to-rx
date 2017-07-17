@@ -1,6 +1,6 @@
 {
   "name": "response-to-rx",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Map a fetch response stream to a utf-8 decoded RX observable",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
