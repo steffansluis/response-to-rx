@@ -24,6 +24,7 @@ export function responseToRXNode(response: Response) {
 }
 
 export function responseToRXBrowser(response: Response) {
+  const decoder = new TextDecoder('utf-8');
   const observable = new Observable(observer => {
     const firstReader = (response.body as any).getReader();
 
@@ -33,15 +34,12 @@ export function responseToRXBrowser(response: Response) {
         return observer.complete();
       }
 
-      observer.next(result.value);
+      observer.next(decoder.decode(result.value) as string);
       return read(reader);
     };
 
     read(firstReader);
   });
-
-  const decoder = new TextDecoder('utf-8');
-  return observable.map(uint8array => decoder.decode(uint8array) as string);
 }
 
 export function responseToRX(response: Response) {
