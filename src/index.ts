@@ -40,6 +40,8 @@ export function responseToRXBrowser(response: Response) {
 
     read(firstReader);
   });
+
+  return observable;
 }
 
 export function responseToRX(response: Response) {
